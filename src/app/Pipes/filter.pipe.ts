@@ -11,5 +11,4 @@ export class FilterPipe implements PipeTransform {
       return post.name.toLowerCase().includes(search.toLowerCase()) || post.phone.includes(search)
     })
   }
-
 }

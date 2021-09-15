@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
+import {contactsService} from "./contacts.service";
 export interface User{
   name:string,
   phone:string,
   birthday?:string,
   email?:string,
-  address?:string
+  address?:string,
+  id:number
 }
 @Component({
   selector: 'app-root',
@@ -12,38 +14,15 @@ export interface User{
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'Contacts';
-  search:string='';
-  users:User[]=[]
-  usersInit:User[]= [{
-    name:'Anton Davidov',
-    phone:'0634785886',
-    birthday:'12.09.1998',
-    email:'email@gmail.com',
-    address: 'lviv'
-  },
-  {
-    name:'Anton Davidov2',
-    phone:'0734785886',
-    birthday:'12.09.1998',
-    email:'email2@gmail.com',
-    address: 'lviv'
-  },
-  {
-   name:'Anton Davidov3',
-    phone:'0934785886',
-    birthday:'12.09.1998',
-    email:'email3@gmail.com',
-    address: 'lviv'
-  },]
+  search: string = '';
 
 
- ngOnInit() {
-    if(!localStorage.users){
-localStorage.setItem('users',JSON.stringify(this.usersInit))
-    }
-   console.log(localStorage.users)
-   this.users = JSON.parse(localStorage.users)
- }
+  constructor( public contacts: contactsService) {
+  }
+
+  ngOnInit() {
+this.contacts.init()
+  }
 }

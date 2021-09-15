@@ -1,22 +1,78 @@
-<button class="btn" (click)="showContent=!showContent" >Add new contact</button>
-<div *ngIf="showContent" class="content">
+<div class="wrapper">
+  <button class="btn" (click)="showContent=!showContent">Add new contact
+  </button>
+  <div *ngIf="showContent" class="content">
 
-  <form [formGroup]="form" (ngSubmit)="submit()">
+    <form [formGroup]="form" (ngSubmit)="submit()">
 
-    <div [ngClass]="{invalid: form.get('name').touched &&
+      <div [ngClass]="{invalid: form.get('name').touched &&
     form.get('name').invalid}"
-         class="form-control">
-      <label for="name">Enter name:</label>
-      <input formControlName="name" type="text" id="name">
-      <div *ngIf="form.get('name').touched && form.get('name').invalid"
-           class="validation">
-        <small *ngIf="form.get('name').errors?.required">Can't be empty</small>
+           class="form-control">
+        <label for="name">*Enter name:</label>
+        <input placeholder="Name" formControlName="name" type="text" id="name">
+        <div *ngIf="form.get('name').touched && form.get('name').invalid"
+             class="validation">
+          <small *ngIf="form.get('name').errors?.required">Can't be
+            empty</small>
+        </div>
       </div>
-    </div>
 
+       <div [ngClass]="{invalid: form.get('phone').touched &&
+    form.get('phone').invalid}"
+           class="form-control">
+        <label for="phone">*Enter phone:</label>
+        <input placeholder="+380-xxx-xxx-xxx" formControlName="phone"
+               type="text"
+               id="phone">
+        <div *ngIf="form.get('phone').touched && form.get('phone').invalid"
+             class="validation">
+          <small *ngIf="form.get('phone').errors?.required">Can't be
+            empty</small>
+        </div>
+      </div>
 
-    <button [disabled]="form.invalid" class="btn" type="submit">Create</button>
-  </form>
+       <div [ngClass]="{invalid: form.get('birthday').touched &&
+    form.get('birthday').invalid}"
+           class="form-control">
+        <label for="birthday">Enter birthday:</label>
+        <input formControlName="birthday" type="date" id="birthday">
+        <div *ngIf="form.get('birthday').touched &&
+        form.get('birthday').invalid"
+             class="validation">
+          <small *ngIf="form.get('birthday').errors?.required">Can't be
+            empty</small>
+        </div>
+      </div>
+
+       <div [ngClass]="{invalid: form.get('email').touched &&
+    form.get('email').invalid}"
+           class="form-control">
+        <label for="email">Enter email:</label>
+        <input placeholder="email@gmail.com" formControlName="email"
+               type="text" id="email">
+        <div *ngIf="form.get('email').touched && form.get('email').invalid"
+             class="validation">
+          <small *ngIf="form.get('email').errors?.required">Can't be
+            empty</small>
+        </div>
+      </div>
+
+       <div [ngClass]="{invalid: form.get('address').touched &&
+    form.get('address').invalid}"
+           class="form-control">
+        <label for="address">Enter city:</label>
+        <input placeholder="Los Angeles" formControlName="address"
+               type='text' id="address">
+        <div *ngIf="form.get('address').touched && form.get('address').invalid"
+             class="validation">
+          <small *ngIf="form.get('address').errors?.required">Can't be
+            empty</small>
+        </div>
+      </div>
+
+      <button [disabled]="form.invalid" class="btn" type="submit">Create
+      </button>
+    </form>
+  </div>
 </div>
-
 

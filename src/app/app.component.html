@@ -1,14 +1,15 @@
 <header>
-  <input id="search" type="text" [(ngModel)]="search">
+  <input placeholder="Find contacts" id="search" type="text"
+         [(ngModel)]="search">
 <app-create></app-create>
 </header>
 
 <div class="wrapper">
-<div *ngFor="let user of users | filter:search" class="card">
+<div *ngFor="let user of contacts.users | filter:search" class="card">
   <div class="card-info">
   <h4>{{user.name}}</h4>
   <span>{{user.phone}}</span>
     </div>
-  <button class="btn">More...</button>
+  <button class="btn">More</button>
 </div>
   </div>

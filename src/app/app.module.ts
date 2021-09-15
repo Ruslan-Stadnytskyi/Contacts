@@ -6,6 +6,7 @@ import { UserComponent } from './Components/user/user.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FilterPipe } from './Pipes/filter.pipe';
 import { CreateComponent } from './Components/create/create.component';
+import {contactsService} from "./contacts.service";
 
 @NgModule({
   declarations: [
@@ -13,13 +14,14 @@ import { CreateComponent } from './Components/create/create.component';
     UserComponent,
     FilterPipe,
     CreateComponent
+
   ],
     imports: [
         BrowserModule,
         FormsModule,
       ReactiveFormsModule
     ],
-  providers: [],
+  providers: [contactsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
