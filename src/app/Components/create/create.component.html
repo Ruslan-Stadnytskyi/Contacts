@@ -1,0 +1,22 @@
+<button class="btn" (click)="showContent=!showContent" >Add new contact</button>
+<div *ngIf="showContent" class="content">
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div [ngClass]="{invalid: form.get('name').touched &&
+    form.get('name').invalid}"
+         class="form-control">
+      <label for="name">Enter name:</label>
+      <input formControlName="name" type="text" id="name">
+      <div *ngIf="form.get('name').touched && form.get('name').invalid"
+           class="validation">
+        <small *ngIf="form.get('name').errors?.required">Can't be empty</small>
+      </div>
+    </div>
+
+
+    <button [disabled]="form.invalid" class="btn" type="submit">Create</button>
+  </form>
+</div>
+
+
