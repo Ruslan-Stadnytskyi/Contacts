@@ -1,18 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../app.component";
-import {contactsService} from "../../contacts.service";
+import {contactsService} from "../contacts.service";
+import {User} from "../app.component";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.scss']
 })
-export class CreateComponent implements OnInit {
-  showContent: Boolean = false
+export class EditUserComponent implements OnInit {
+  @Input() user: any
   form: FormGroup | any
 
-  constructor(private contacts: contactsService) {
+  constructor(private contacts: contactsService, private router: Router) {
+
   }
 
   ngOnInit(): void {
@@ -27,19 +29,15 @@ export class CreateComponent implements OnInit {
   }
 
   submit():void {
-    let id = this.contacts.users[this.contacts.users.length - 1]?.id + 1;
-    if (this.contacts.users.length === 0) id = 0
-
-    const newContact: User = {
+    const editedUser: User = {
       name: this.form.value.name,
       phone: this.form.value.phone,
       birthday: this.form.value.birthday,
       email: this.form.value.email,
       address: this.form.value.address,
-      id: id
+      id: this.user.id
     }
-    this.showContent = false
-    this.contacts.addUser(newContact)
+    this.contacts.editUser(editedUser)
+    this.router.navigate([''])
   }
-
 }

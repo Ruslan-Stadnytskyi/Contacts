@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 
 @Pipe({
@@ -6,9 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(users: any, search:string='') {
-    return users.filter((post:any)=>{
-      return post.name.toLowerCase().includes(search.toLowerCase()) || post.phone.includes(search)
+  transform(users: any, search: string = '') {
+    return users.filter((post: any) => {
+      return post.name.toLowerCase().includes(search.toLowerCase()) ||
+        post.phone.includes(search)
     })
   }
 }

@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <div *ngIf="!showEdit">
+    <h2>Name: {{user.name}}</h2>
+    <h4>Phone:  {{user.phone}}</h4>
+    <h4>Birthday:  {{user.birthday}}</h4>
+    <h4>Email:  {{user.email}}</h4>
+    <h4>City:  {{user.address}}</h4>
+  </div>
+  <app-edit-user *ngIf="showEdit" [user]="user"></app-edit-user>
+  <button *ngIf="!showEdit" class="btn" (click)="edit()">Edit</button>
+  <button *ngIf="!showEdit" class="btn" (click)="delete()">Delete</button>
+</div>
+<button class="btn" (click)="toHomePage()">Back</button>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {contactsService} from "../../contacts.service";
 
 @Component({
   selector: 'app-user',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+  title = 'Contacts';
+  search: string = '';
 
-  constructor() { }
+  constructor(public contacts: contactsService) {
+  }
 
   ngOnInit(): void {
+    this.contacts.init()
   }
 
 }

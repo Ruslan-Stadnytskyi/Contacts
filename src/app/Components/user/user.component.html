@@ -1,1 +1,10 @@
-<p>user works!</p>
+<input placeholder="Find contacts" id="search" type="text"
+       [(ngModel)]="search">
+
+<div *ngFor="let user of contacts.users | filter:search" class="card">
+  <div class="card-info">
+    <h4>{{user.name}}</h4>
+    <span>{{user.phone}}</span>
+  </div>
+  <button class="btn" [routerLink]="['/user',user.id]">More</button>
+</div>
